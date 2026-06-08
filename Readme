@@ -1,0 +1,111 @@
+# Ansible Learning Lab
+
+This repository contains my Ansible practice playbooks, inventory files, and automation examples for Linux server administration and DevOps tasks.
+
+## Overview
+
+The purpose of this repository is to learn and practice:
+
+* Ansible Inventory Management
+* Ad-hoc Commands
+* Playbook Development
+* Package Installation
+* Service Management
+* File Transfer Automation
+* Linux Administration
+* Infrastructure Automation
+
+## Repository Structure
+
+```text
+ansible/
+├── inventory
+├── playbook.yml
+├── copy_zip.yml
+└── README.md
+```
+
+## Inventory
+
+The inventory file contains the target hosts managed by Ansible.
+
+Example:
+
+```ini
+[web]
+<server-ip>
+
+[web:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/path/to/key.pem
+```
+
+## Sample Playbooks
+
+### Install Nginx and Docker
+
+This playbook performs:
+
+* Update package cache
+* Install Nginx
+* Start and enable Nginx
+* Install Docker
+* Start and enable Docker
+
+Run:
+
+```bash
+ansible-playbook -i inventory playbook.yml
+```
+
+### Copy ZIP File to Remote Server
+
+This playbook copies a ZIP file from the Ansible control node to the target server.
+
+Run:
+
+```bash
+ansible-playbook -i inventory copy_zip.yml
+```
+
+## Useful Commands
+
+### Test Connectivity
+
+```bash
+ansible all -i inventory -m ping
+```
+
+### Gather Facts
+
+```bash
+ansible all -i inventory -m setup
+```
+
+### Check Service Status
+
+```bash
+ansible web -i inventory -m shell -a "systemctl status nginx --no-pager"
+```
+
+### Run a Playbook
+
+```bash
+ansible-playbook -i inventory playbook.yml
+```
+
+## Technologies Used
+
+* Ansible
+* Linux
+* Ubuntu
+* AWS EC2
+* SSH
+* YAML
+
+## Learning Objectives
+
+* Automate repetitive Linux administration tasks
+* Manage multiple servers from a central control node
+* Deploy and configure applications consistently
+* Improve infrastructure management using Infrastructure as Code (IaC)
