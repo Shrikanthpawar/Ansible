@@ -1,0 +1,22 @@
+---
+- name: Copy zip file to application server
+  hosts: web
+  become: yes
+
+  tasks:
+
+    - name: Create application directory
+      file:
+        path: /home/ubuntu
+        state: directory
+
+    - name: Copy zip file
+      copy:
+        src: /home/ubuntu/Pem_keys.zip
+        dest: /home/ubuntu/Pem_keys.zip
+
+  tasks:
+    - name: Copy directory
+      copy:
+        src: /home/ubuntu/ansible/
+        dest: /home/ubuntu/ansible/
